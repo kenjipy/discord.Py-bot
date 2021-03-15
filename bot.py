@@ -31,7 +31,7 @@ async def mute(ctx, self, user: discord.Member, *, reason=None):
     await member.mute(reason=reason)
     await ctx.send(f' user {member} has been muted.')
     
-  @client.command()
+@client.command()
 async def server(ctx):
     name = str(ctx.guild.name)
     description = str(ctx.guild.description)
