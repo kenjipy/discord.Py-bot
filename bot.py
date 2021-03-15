@@ -28,7 +28,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
 @client.command()
 @commands.has_permissions(kick_members=True)
-async def mute(ctx, member: discord.Member, *, reason=None):
+async def mute(ctx, self, user: discord.Member, *, reason=None):
     await member.mute(reason=reason)
     await ctx.send(f' user {member} has been muted.')
 
