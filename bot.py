@@ -14,8 +14,10 @@ async def on_ready():
     print('Connected to bot: {}'.format(client.user.name))
     print('Bot ID: {}'.format(client.user.id))
 
+
 @client.command()
-async def ping():
+async def ping(ctx):
+    await ctx.send('Pong! {0}'.format(round(client.latency * 1000,  'ms')))
 
 
 @client.command()
