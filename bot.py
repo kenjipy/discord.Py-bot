@@ -1,9 +1,8 @@
 import discord
 from discord.ext import commands
 import random
-
-from urllib import parse, request
-import re
+from discord import Member
+from discord.ext.commands import has_permissions, MissingPermissions
 
 client = commands.Bot(command_prefix='!')
 
@@ -32,6 +31,11 @@ async def mute(ctx, self, user: discord.Member, *, reason=None):
     await member.mute(reason=reason)
     await ctx.send(f' user {member} has been muted.')
 
+@client.command()
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member: discord.Member, *, reason=None):
+    await member.ban(reason=reason)
+    await ctx.send(f' user {member} has been banned.')
 
 
 client.run('PUTTOKENHERE')
