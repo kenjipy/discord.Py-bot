@@ -21,9 +21,16 @@ async def ping(ctx):
 
 
 @client.command()
-@commands.has_permissions(MANAGE_MASSAGE=True)
-async def clear(ctx, amount=5):
-    await ctx.channel.purge(limet=amount)
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, member: discord.Member, *, reason=None):
+    await member.kick(reason=reason)
+    await ctx.send(f' user {member} has been kicked.')
+
+@client.command()
+@commands.has_permissions(kick_members=True)
+async def mute(ctx, member: discord.Member, *, reason=None):
+    await member.mute(reason=reason)
+    await ctx.send(f' user {member} has been muted.')
 
 
 
