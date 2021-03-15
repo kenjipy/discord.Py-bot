@@ -30,6 +30,22 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def mute(ctx, self, user: discord.Member, *, reason=None):
     await member.mute(reason=reason)
     await ctx.send(f' user {member} has been muted.')
+    
+ 
+@client.command()
+@commands.has_permissions(ban_members=True)
+async def unban(ctx, *, member):
+    bannedUsers = await ctx.guild.bans()
+    name, discriminator = member.split("#")
+
+    for ban in bannedUsers:
+        user = ban.user
+
+        if(user.name, user.discriminator) == (name, discriminator):
+            await ctx.guild.unban(user)
+            await ctx.send(f"{user.mention} was unbanned.")
+            return
+
 
 @client.command()
 @commands.has_permissions(ban_members=True)
