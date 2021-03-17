@@ -4,7 +4,7 @@ import random
 from discord import Member
 from discord.ext.commands import has_permissions, MissingPermissions
 
-client = commands.Bot(command_prefix='!')
+client = commands.Bot(command_prefix='PUTYOURPREFIXHERE')
 
 @client.event
 async def on_ready():
